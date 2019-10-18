@@ -26,6 +26,18 @@
 -- **To clarify - if the rental brackets were 0.99, 1.99, 2.99, 3.99, we want the new prices to be
 -- 0.10, 1.00, 2.99, 3.99
 
+
+My answer:
+
+SELECT rating, rental_rate,
+CASE WHEN (rental_rate <=0.99) THEN '0.10' 
+WHEN (rental_rate <=1.99) THEN '1.00' 
+WHEN (rental_rate <=2.99) THEN '2.99' 
+WHEN (rental_rate <=3.99) THEN '3.99' else rental_rate end as new_rate
+From film
+WHERE rating = 'PG-13';
+
+
 -- HINT: you can hardcode the rental bracket rates (just typing in the number - eg 1.99) first to make sure 
 -- you can get your CASE WHEN statement to work, THEN see if you can put it all together with softcoding 
 -- (using a CTE/subquery to return the number - eg. 1.99)
